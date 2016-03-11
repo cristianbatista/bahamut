@@ -1,0 +1,144 @@
+<div ng-controller="Neo4jListController">
+    {{search}}
+    <div id="popoto-taxonomy" class="drawer-p">
+        <h5>Node labels</h5>
+        <!-- Label/taxonomy filter will be generated here -->
+    </div>
+    <div id="main" class="main">
+
+        <div class="notice-bar">
+            Popoto.js CSS customization example using <a href="http://neo4j.com/" style="color: #0ebcff;">Neo4j</a> like web browser CSS style.
+
+        </div>
+        <div class="code-bar">
+            Tips: Right click on a node to retrieve the relations. Use left click to expand and select a value. Right click can also be used to remove a selection.
+        </div>
+        <div class="code-bar" id="popoto-cypher">
+        </div>
+        <div class="frame-p" id="popoto-graph">
+            <!-- Graph will be generated here-->
+        </div>
+        <div class="code-bar" id="count">
+            Returned <span id="rescount">0</span> rows
+        </div>
+        <!--<div id="popoto-results" class="table-holder">-->
+            <!--&lt;!&ndash; Results will be generated here &ndash;&gt;-->
+        <!--</div>-->
+    </div>
+
+
+
+<!-- Required scripts -->
+<script>
+//    var inputValue;
+//
+//    d3.select("#filter-button").on("click", function (d) {
+//        filterData();
+//    });
+//    d3.select("#filter-form").on("submit", function () {
+//        d3.event.preventDefault();
+//        filterData();
+//        return false;
+//    });
+//
+//    function filterData() {
+//        var value = d3.select("#constraint")[0][0].value;
+//        inputValue = value;
+//
+//        // Recreate taxonomies panel
+//        d3.select("#" + popoto.taxonomy.containerId).selectAll("ul").data([]).exit().remove();
+//        popoto.taxonomy.createTaxonomyPanel();
+//
+//        popoto.tools.reset();
+//    }
+
+    var a;
+
+    a = window.location.href.toString().split(window.location.host)[1];
+
+    a = a.substring(9);
+
+    popoto.updateGraph();
+
+    popoto.logger.LEVEL = popoto.logger.LogLevels.INFO;
+    popoto.logger.LEVEL = popoto.logger.LogLevels.DEBUG;
+
+    // Change ellipses dimension to have circles
+    popoto.graph.node.ELLIPSE_RX = 40;
+    popoto.graph.node.ELLIPSE_RY = 40;
+    popoto.graph.node.TEXT_Y = 6;
+    popoto.graph.LINK_DISTANCE = 100;
+    popoto.graph.node.BACK_CIRCLE_R = 48;
+
+    // Disable toggle taxonomy tool button
+    popoto.tools.TOGGLE_TAXONOMY = false;
+
+    popoto.rest.CYPHER_URL = "http://ec2-54-94-173-25.sa-east-1.compute.amazonaws.com:7474/db/data/transaction/commit";
+
+    popoto.rest.AUTHORIZATION = "Basic " + btoa("neo4j:123456");
+
+    // Define the list of label provider to customize the graph behavior:
+    popoto.provider.nodeProviders = {
+        "Database": {
+            "returnAttributes": ["type","name"],
+            "constraintAttribute": "type"
+        },
+        "Table": {
+            "returnAttributes": ["name"],
+            "constraintAttribute": "name"
+        },
+        "Owner": {
+            "returnAttributes": ["name"],
+            "constraintAttribute": "name"
+        },
+        "Odi": {
+            "returnAttributes": ["name"],
+            "constraintAttribute": "name"
+        },
+        "System": {
+            "returnAttributes": ["name"],
+            "constraintAttribute": "name"
+        },
+        "Area": {
+            "returnAttributes": ["name"],
+            "constraintAttribute": "name"
+            ,
+            "getPredefinedConstraints": function (node) {
+
+                return ["$identifier.name =~ '(?i).*" + a + ".*'"];
+
+            }
+        }
+
+    };
+
+//    // Add a listener on returned result count to update count in page
+//    popoto.result.onTotalResultCount(function (count) {
+//        d3.select("#rescount").text(function (d) {
+//            return "(" + count + ")";
+//        })
+//    });
+
+    // Change the number of displayed results:
+    popoto.query.RESULTS_PAGE_SIZE = 25;
+
+    popoto.graph.node.NodeTypes.root = "Database";
+
+    popoto.graph.node.NODE_MAX_CHARS = "35";
+
+    popoto.tools.RESET_GRAPH = false;
+    // Start the generation using parameter as root label of the query.
+    popoto.start("Area");
+
+    console.log(a);
+
+    popoto.tools.reset();
+
+//    window.onload = function () {
+//        popoto.update();
+//    };
+
+
+</script>
+
+</div>

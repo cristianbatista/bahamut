@@ -21,8 +21,22 @@ class Project extends Model implements Transformable
 
     ];
 
+    public function client(){
+        return $this->hasOne(Client::class,'id','client_id');
+    }
+
     public function notes(){
         return $this->hasMany(ProjectNote::class);
+    }
+
+    public function members()
+    {
+        return $this->belongsToMany(User::class,'project_members', 'project_id','member_id');
+    }
+
+    public function files()
+    {
+        return $this->hasMany(ProjectFile::class);
     }
 
 }
