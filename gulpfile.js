@@ -32,7 +32,8 @@ config.vendor_path_js = [
     config.bower_path + '/morrisjs/morris-data.js',
     config.bower_path + '/popoto/js/analytics.js',
     config.bower_path + '/popoto/js/d3.v3.min.js',
-    config.bower_path + '/popoto/js/popoto.min.js'
+    //config.bower_path + '/popoto/js/popoto.min.js',
+    config.bower_path + '/popoto/js/popoto.js'
 
 ];
 

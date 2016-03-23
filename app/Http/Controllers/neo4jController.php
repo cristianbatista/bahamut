@@ -2,6 +2,7 @@
 
 namespace CodeProject\Http\Controllers;
 
+use CodeProject\Services\Neo4jService;
 use Illuminate\Http\Request;
 
 use CodeProject\Http\Requests;
@@ -26,7 +27,9 @@ class neo4jController extends Controller
      * @param ClientRepository $repository
      * @param ClienteService $service
      */
-    public function __construct(){
+    public function __construct(Neo4jService $service){
+
+        $this->service = $service;
 
         $this->connection = ClientBuilder::create()
             ->addConnection('default', 'http', 'ec2-54-94-173-25.sa-east-1.compute.amazonaws.com', 7474, true, 'neo4j', '123456')

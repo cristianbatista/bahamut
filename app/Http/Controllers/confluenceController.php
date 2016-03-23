@@ -23,7 +23,6 @@ class confluenceController extends Controller
     private $service;
 
 
-
     /**
      * @param ClientRepository $repository
      * @param ClienteService $service
@@ -40,16 +39,20 @@ class confluenceController extends Controller
      */
     public function index()
     {
-        $client = new Client([
-            // Base URI is used with relative requests
-            'base_uri' => 'http://httpbin.org',
-            // You can set any number of default request options.
-            'timeout'  => 2.0,
-        ]);
-        // Send a request to https://foo.com/api/test
-        $response = $client->request('GET', 'test');
+        $client = new Client();
 
-        return $response;
+        $response = $client->get('https://bahamut.atlassian.net/wiki/rest/api/content', [
+
+            'auth' => ['admin', 'e398xp90'],
+            'timeout'  => 3600
+        ]);
+
+//        if ($response->hasHeader('Content-Length')) {
+//            echo  "It exists";
+//        };
+        $return = json_decode($response->getBody(), true);
+
+        return $return['results'][0];
     }
 
     public function search($str){

@@ -1,10 +1,19 @@
 <div ng-controller="Neo4jListController">
     {{search}}
+
     <div id="popoto-taxonomy" class="drawer-p">
         <h5>Node labels</h5>
         <!-- Label/taxonomy filter will be generated here -->
     </div>
     <div id="main" class="main">
+
+        <form>
+            <div class="form-group">
+                <label for="node1">Type</label>
+                <input id="node1" type="text" class="form-control" style="width: 300px;" value="" placeholder="">
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
 
         <div class="notice-bar">
             Popoto.js CSS customization example using <a href="http://neo4j.com/" style="color: #0ebcff;">Neo4j</a> like web browser CSS style.
@@ -13,6 +22,7 @@
         <div class="code-bar">
             Tips: Right click on a node to retrieve the relations. Use left click to expand and select a value. Right click can also be used to remove a selection.
         </div>
+
         <div class="code-bar" id="popoto-cypher">
         </div>
         <div class="frame-p" id="popoto-graph">
@@ -24,6 +34,8 @@
         <!--<div id="popoto-results" class="table-holder">-->
             <!--&lt;!&ndash; Results will be generated here &ndash;&gt;-->
         <!--</div>-->
+
+
     </div>
 
 

@@ -20,6 +20,8 @@ Route::post('oauth/access_token', function() {
 });
 
 Route::get('neo4j','neo4jController@index');
+Route::post('neo4j/new','neo4jController@store');
+Route::get('confluence','confluenceController@index');
 
 Route::group(['middleware'=>'oauth'], function (){
 

@@ -535,7 +535,6 @@
 
 <!-- DIRECTIVES !-->
 <script src="{{asset('build/js/directives/format.js')}}"></script>
-<script src="{{asset('build/js/directives/popoto.js')}}"></script>
 
 <!-- SERVICES !-->
 <script src="{{asset('build/js/services/client.js')}}"></script>
@@ -547,7 +546,8 @@
 <!-- POPOTO -->
 <script src="{{asset('build/js/vendor/analytics.js')}}"></script>
 <script src="{{asset('build/js/vendor/d3.v3.min.js')}}"></script>
-<script src="{{asset('build/js/vendor/popoto.min.js')}}"></script>
+<!--<script src="{{asset('build/js/vendor/popoto.min.js')}}"></script>-->
+<script src="{{asset('build/js/vendor/popoto.js')}}"></script>
 
 ?rev=<?php echo time();?>
 
