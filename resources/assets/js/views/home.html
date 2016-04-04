@@ -1,17 +1,31 @@
-<div class="container-fluid" xmlns="http://www.w3.org/1999/html">
+<div class="container-fluid" xmlns="http://www.w3.org/1999/html" ng-controller="HomeController">
     <div class="row">
-        <div class="col-md-2">
-            <br class="form-group">
-                Search: <input ng-model="search.attribute">
-                <div class="col-md-6 col-md-offset-4">
-                    </br>
-                    <button type="button" class="btn btn-danger" ng-click="searchGet()">
+        <h1 class="page-header">
+            We have...
+        </h1>
+        <div donut-chart donut-data="data"></div>
+        <!--<div class="col-md-9">-->
+            <!--<br class="form-group">-->
+                <!--Search: <input ng-model="search.attribute">-->
+                <!--<div class="col-md-6 col-md-offset-4">-->
+                    <!--</br>-->
+                    <!--<button type="button" class="btn btn-danger" ng-click="searchGet()">-->
+                        <!--Pesquisar-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <div class="col-lg-4 col-lg-offset-4">
+            <div class="input-group">
 
-                        Pesquisar
-                    </button>
-                </div>
+                    <input type="text" class="form-control" ng-model="search.attribute">
+                    <span class="input-group-btn"><button class="btn btn-default" type="button" ng-click="searchGet()"><i class="fa fa-search"></i></button></span>
+
             </div>
         </div>
     </div>
-    <script>popoto.update()</script>
+    <!--<script>-->
+        <!--popoto.update();-->
+    <!--</script>-->
 </div>
+

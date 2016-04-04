@@ -1,5 +1,4 @@
 <div ng-controller="Neo4jListController">
-    {{search}}
 
     <div id="popoto-taxonomy" class="drawer-p">
         <h5>Node labels</h5>
@@ -7,26 +6,39 @@
     </div>
     <div id="main" class="main">
 
-        <form>
-            <div class="form-group">
-                <label for="node1">Type</label>
-                <input id="node1" type="text" class="form-control" style="width: 300px;" value="" placeholder="">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-
         <div class="notice-bar">
-            Popoto.js CSS customization example using <a href="http://neo4j.com/" style="color: #0ebcff;">Neo4j</a> like web browser CSS style.
+            Search for nodes with contains <b style="color: #ee4e10">{{search}}</b> in attribute.
 
         </div>
         <div class="code-bar">
             Tips: Right click on a node to retrieve the relations. Use left click to expand and select a value. Right click can also be used to remove a selection.
         </div>
 
-        <div class="code-bar" id="popoto-cypher">
+        <div class="code-bar inline-block" id="popoto-cypher">
+            <!--<div class="btn-group row" role="group" aria-label="Controls">-->
+                <!--<button type="button" class="btn btn-success toggle-sidebar glyphicon glyphicon-plus pull-right"></button>-->
+            <!--</div>-->
+
+            <button type="button" class="btn btn-success toggle-sidebar pull-right">
+                <span class="glyphicon glyphicon-plus text-center" style="font-size: 25px"></span> Add Node
+            </button>
+
         </div>
-        <div class="frame-p" id="popoto-graph">
-            <!-- Graph will be generated here-->
+
+        <div class="row" id="row-main">
+            <div class="frame-p col-md-12" id="popoto-graph">
+                <!-- Graph will be generated here-->
+            </div>
+
+            <div class="collapsed" id="sidebar">
+                <form>
+                    <div class="form-group">
+                        <label for="node1">Type</label>
+                        <input id="node1" type="text" class="form-control" style="width: 180px;" value="" placeholder="">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </form>
+            </div>
         </div>
         <div class="code-bar" id="count">
             Returned <span id="rescount">0</span> rows
@@ -124,13 +136,6 @@
 
     };
 
-//    // Add a listener on returned result count to update count in page
-//    popoto.result.onTotalResultCount(function (count) {
-//        d3.select("#rescount").text(function (d) {
-//            return "(" + count + ")";
-//        })
-//    });
-
     // Change the number of displayed results:
     popoto.query.RESULTS_PAGE_SIZE = 25;
 
@@ -149,6 +154,14 @@
 //    window.onload = function () {
 //        popoto.update();
 //    };
+
+
+$(".toggle-sidebar").click(function () {
+    $("#sidebar").toggleClass("collapsed");
+    $("#popoto-graph").toggleClass("col-md-12 col-md-9");
+
+    return false;
+});
 
 
 </script>

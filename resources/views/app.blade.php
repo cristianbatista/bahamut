@@ -11,7 +11,7 @@
 
     <title>SB Admin - Bootstrap Admin Template</title>
 
-    <link href="{{ asset('build/css/app.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('build/css/app.css') }}" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="{{  asset('build/css/vendor/bootstrap.min.css') }}" rel="stylesheet">
@@ -505,7 +505,8 @@
     <!-- Morris Charts JavaScript -->
     <script src="{{asset('build/js/vendor/raphael-min.js')}}"></script>
     <script src="{{asset('build/js/vendor/morris.min.js')}}"></script>
-    <script src="{{asset('build/js/vendor/morris-data.js')}}"></script>
+    <script src="{{asset('build/js/vendor/angular-morris-chart.min.js')}}"></script>
+
 
     <script src="{{asset('build/js/app.js')}}"></script>
 
@@ -535,6 +536,7 @@
 
 <!-- DIRECTIVES !-->
 <script src="{{asset('build/js/directives/format.js')}}"></script>
+<script src="{{asset('build/js/directives/donutChart.js')}}"></script>
 
 <!-- SERVICES !-->
 <script src="{{asset('build/js/services/client.js')}}"></script>
@@ -549,7 +551,16 @@
 <!--<script src="{{asset('build/js/vendor/popoto.min.js')}}"></script>-->
 <script src="{{asset('build/js/vendor/popoto.js')}}"></script>
 
-?rev=<?php echo time();?>
+<script>
+    $(document).ready(function () {
+        $(".toggle-sidebar").click(function () {
+            $("#sidebar").toggleClass("collapsed");
+            $("#popoto-graph").toggleClass("col-md-12 col-md-9");
+
+            return false;
+        });
+    });
+</script>
 
 </body>
 

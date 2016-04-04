@@ -30,6 +30,7 @@ config.vendor_path_js = [
     config.bower_path + '/raphael/raphael-min.js',
     config.bower_path + '/morrisjs/morris.min.js',
     config.bower_path + '/morrisjs/morris-data.js',
+    config.bower_path + '/angular-morris-chart/src/angular-morris-chart.min.js',
     config.bower_path + '/popoto/js/analytics.js',
     config.bower_path + '/popoto/js/d3.v3.min.js',
     //config.bower_path + '/popoto/js/popoto.min.js',

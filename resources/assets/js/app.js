@@ -1,4 +1,4 @@
-var app = angular.module('app',['ngRoute','angular-oauth2','app.controllers', 'app.services', 'app.filters', 'ui.bootstrap']);
+var app = angular.module('app',['ngRoute','angular-oauth2','app.controllers', 'app.services', 'app.filters', 'ui.bootstrap', 'angular.morris-chart']);
 
 angular.module('app.controllers',['ngMessages','angular-oauth2']);
 angular.module('app.filters',[]);
@@ -48,11 +48,11 @@ app.config([
     '$routeProvider', '$httpProvider', 'OAuthProvider', 'OAuthTokenProvider','appConfigProvider',
     function($routeProvider, $httpProvider, OAuthProvider, OAuthTokenProvider, appConfigProvider){
 
-        $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-        $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        //$httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+        //$httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 
-        $httpProvider.defaults.transformRequest = appConfigProvider.config.utils.transformRequest;
-        $httpProvider.defaults.transformResponse = appConfigProvider.config.utils.transformResponse;
+        //$httpProvider.defaults.transformRequest = appConfigProvider.config.utils.transformRequest;
+        //$httpProvider.defaults.transformResponse = appConfigProvider.config.utils.transformResponse;
 
     $routeProvider
     .when('/login',{

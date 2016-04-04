@@ -45,7 +45,9 @@ class neo4jController extends Controller
     public function index()
     {
 
-        $q = 'MATCH (a:Area) RETURN a.name';
+        $q = 'MATCH (a) WITH DISTINCT LABELS(a) AS temp, COUNT(a) AS tempCnt
+UNWIND temp AS label
+RETURN label, SUM(tempCnt) AS value';
         $this->connection->sendCypherQuery($q);
 
         $result = $this->connection->getRows();

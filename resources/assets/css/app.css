@@ -328,3 +328,24 @@ li img {
 
 
 /*# sourceMappingURL=app.css.map*/
+
+.collapsed {
+  display: block;
+  margin-right: -25%; /* same width as sidebar */
+}
+
+#row-main {
+  /* necessary to hide collapsed sidebar */
+  overflow-x: hidden;
+}
+
+#content {
+  /* for the animation */
+  transition: width 0.3s ease;
+}
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
